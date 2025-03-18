@@ -38,7 +38,7 @@ public class RedissonRedLockConfig {
         List<RLock> locks = new ArrayList<>();
         // 此处所有客户端都使用同一把锁名称 "myLock"，以实现 RedLock 效果
         for (RedissonClient client : redissonClientsForRedLock) {
-            locks.add(client.getLock("myLock"));
+            locks.add(client.getLock("RedLock"));
         }
         return new RedissonMultiLock(locks.toArray(new RLock[0]));
     }
