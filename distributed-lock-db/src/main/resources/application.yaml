@@ -1,0 +1,19 @@
+spring:
+  application:
+    name: distributed-lock-db
+  datasource:
+    url: jdbc:mysql://localhost:3306/distributed_lock?serverTimezone=UTC&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  # entity location
+  type-aliases-package: com.wangguangwu.distributedlockdb.entity
+  mapper-locations: classpath*:mapper/*.xml
+  global-config:
+    # logic delete
+    db-config:
+      logic-delete-field: is_deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
