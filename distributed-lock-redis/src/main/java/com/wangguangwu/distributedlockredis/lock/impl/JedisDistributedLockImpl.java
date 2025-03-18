@@ -96,4 +96,9 @@ public class JedisDistributedLockImpl extends AbstractDistributedLock {
             LOCK_VALUES.remove(threadId);
         }
     }
+
+    @Override
+    public boolean isLockHeldByCurrentThread() {
+        throw new UnsupportedOperationException();
+    }
 }

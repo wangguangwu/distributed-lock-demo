@@ -17,4 +17,8 @@ public final class LockConstants {
     public static final String UNLOCK_FAIL = "UNLOCK_FAIL";
 
     public static final long DEFAULT_LOCK_TIME_PX = 10000;
+
+    public static final long DEFAULT_WAIT_TIME_SEC = 5;
+
+    public static final long DEFAULT_LEASE_TIME_SEC = 10;
 }

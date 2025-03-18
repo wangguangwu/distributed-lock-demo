@@ -39,4 +39,11 @@ public abstract class AbstractDistributedLock {
      */
     public abstract void unlock();
 
+    /**
+     * 判断当前线程是否持有锁
+     *
+     * @return true 表示是，否则 false
+     */
+    public abstract boolean isLockHeldByCurrentThread();
+
 }

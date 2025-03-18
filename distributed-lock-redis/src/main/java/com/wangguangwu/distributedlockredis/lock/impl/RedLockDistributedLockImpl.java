@@ -52,4 +52,9 @@ public class RedLockDistributedLockImpl extends AbstractDistributedLock {
             System.out.println("[RedLock] 释放锁: " + lockKey);
         }
     }
+
+    @Override
+    public boolean isLockHeldByCurrentThread() {
+        throw new UnsupportedOperationException();
+    }
 }
