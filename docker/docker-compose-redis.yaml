@@ -1,0 +1,45 @@
+version: '3.8'
+services:
+  redis1:
+    image: redis:7
+    container_name: redis1
+    ports:
+      - "6379:6379"
+    networks:
+      - redis-net
+
+  redis2:
+    image: redis:7
+    container_name: redis2
+    ports:
+      - "6380:6379"
+    networks:
+      - redis-net
+
+  redis3:
+    image: redis:7
+    container_name: redis3
+    ports:
+      - "6381:6379"
+    networks:
+      - redis-net
+
+  redis4:
+    image: redis:7
+    container_name: redis4
+    ports:
+      - "6382:6379"
+    networks:
+      - redis-net
+
+  redis5:
+    image: redis:7
+    container_name: redis5
+    ports:
+      - "6383:6379"
+    networks:
+      - redis-net
+
+networks:
+  redis-net:
+    driver: bridge

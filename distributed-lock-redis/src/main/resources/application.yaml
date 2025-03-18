@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: distributed-lock-redis
+
+# Jedis 单实例配置（用于手工实现锁）
+jedis:
+  host: 127.0.0.1
+  port: 6379
+
+# Redisson 单实例配置（直接使用 RLock）
+redisson:
+  address: "redis://127.0.0.1:6379"
+
+# RedLock 场景配置（基于 RedissonMultiLock，需要 5 个 Redis 实例）
+redisson-red-lock:
+  addresses:
+    - "redis://127.0.0.1:6379"
+    - "redis://127.0.0.1:6380"
+    - "redis://127.0.0.1:6381"
+    - "redis://127.0.0.1:6382"
+    - "redis://127.0.0.1:6383"
