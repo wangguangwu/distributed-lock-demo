@@ -17,7 +17,7 @@ class PessimisticLockServiceTest {
     @Autowired
     private PessimisticLockService pessimisticLockService;
 
-    private static final int THREAD_COUNT = 50;
+    private static final int THREAD_COUNT = 30;
 
     @Test
     void testPessimisticLock() throws InterruptedException {

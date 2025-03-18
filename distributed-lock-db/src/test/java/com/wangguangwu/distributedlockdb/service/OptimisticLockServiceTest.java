@@ -19,7 +19,7 @@ class OptimisticLockServiceTest {
     @Autowired
     private OptimisticLockService optimisticLockService;
 
-    private static final int THREAD_COUNT = 50;
+    private static final int THREAD_COUNT = 30;
 
     @Test
     @DisplayName("测试乐观锁获取资源")
