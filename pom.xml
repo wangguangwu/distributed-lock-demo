@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
@@ -7,21 +8,29 @@
     <artifactId>distributed-lock-demo</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>distributed-lock-demo</name>
-    <description>distributed-lock-demo</description>
+    <description>分布式锁的常见实现方式</description>
     <packaging>pom</packaging>
+
+    <modules>
+        <module>distributed-lock-db</module>
+        <module>distributed-lock-redis</module>
+        <module>distributed-lock-zookeeper</module>
+        <module>distributed-lock-consul</module>
+    </modules>
 
     <properties>
         <java.version>17</java.version>
         <spring.boot.version>3.2.3</spring.boot.version>
         <mybatis.plus.version>3.5.5</mybatis.plus.version>
         <mysql.version>8.0.33</mysql.version>
-        <redis.clients.version>3.6.3</redis.clients.version>
-        <redisson.version>3.19.0</redisson.version>
+        <jedis.version>4.3.1</jedis.version>
+        <redisson.version>3.23.5</redisson.version>
         <consul.version>1.4.5</consul.version>
     </properties>
 
     <dependencyManagement>
         <dependencies>
+            <!-- Spring Boot 统一管理依赖 -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
@@ -30,29 +39,42 @@
                 <scope>import</scope>
             </dependency>
 
+            <!-- MyBatis-Plus -->
             <dependency>
                 <groupId>com.baomidou</groupId>
                 <artifactId>mybatis-plus-spring-boot3-starter</artifactId>
                 <version>${mybatis.plus.version}</version>
             </dependency>
 
+            <!-- MySQL Connector -->
             <dependency>
                 <groupId>mysql</groupId>
                 <artifactId>mysql-connector-java</artifactId>
                 <version>${mysql.version}</version>
             </dependency>
 
+            <!-- Spring Boot Redis Starter -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
+                <version>${spring.boot.version}</version>
             </dependency>
 
+            <!-- Jedis 客户端，用于手工实现 Redis 分布式锁 -->
+            <dependency>
+                <groupId>redis.clients</groupId>
+                <artifactId>jedis</artifactId>
+                <version>${jedis.version}</version>
+            </dependency>
+
+            <!-- Redisson 分布式锁 -->
             <dependency>
                 <groupId>org.redisson</groupId>
                 <artifactId>redisson-spring-boot-starter</artifactId>
                 <version>${redisson.version}</version>
             </dependency>
 
+            <!-- Consul (如果有需要的话) -->
             <dependency>
                 <groupId>com.ecwid.consul</groupId>
                 <artifactId>consul-api</artifactId>
@@ -60,13 +82,6 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-    <modules>
-        <module>distributed-lock-db</module>
-        <module>distributed-lock-redis</module>
-        <module>distributed-lock-zookeeper</module>
-        <module>distributed-lock-consul</module>
-    </modules>
 
     <build>
         <plugins>
@@ -76,5 +91,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
